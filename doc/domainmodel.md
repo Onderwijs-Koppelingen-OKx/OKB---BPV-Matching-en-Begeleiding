@@ -1,26 +1,8 @@
-# This is the highlevel domain model
+# Dit is het relevante highlevel domain model uitgedrukt in OOAPI v5
 
 ```mermaid
 classDiagram
- class Association {
-    	associationId : UUID
-        associationType : associationType
-        role : associationRole
-        state : state
-        consumers : x-nl-okbb-Association
-        person : personId or Person
-        offering : offeringId
-    }
-    class `x-nl-okbb-Association` {
-    	consumerKey : string = "x-nl-okbb"
-	    totalHours : int
-        approvedHours: int
-	    programOfferingAssociationId : string
-	    courseOfferingAssociationId : string
-        company: Organisation
 
-        
-    }
     class Person {
         personId : UUID
         primaryCode : identifierEntity
@@ -35,13 +17,6 @@ classDiagram
 		otherCodes: identifierEntity[]
     	consumers : x-nl-okbb-Person
     }
-
-    class `x-nl-okbb-Person` {
-    	consumerKey : string = "x-nl-okbb"
-        preferredName: string
-	    idCheckName : string
-    }
-
 
     class Offering {
        offeringId : UUID
@@ -61,17 +36,7 @@ classDiagram
         validFrom : date-string
         validTo : date-string
     }
-    class `x-nl-okbb-Organization` {
-        consumerKey : string = "x-nl-okbb"
-		leerbedrijfID : string
-    }
-    Organization o-- `x-nl-okbb-Organization`
-    x-nl-okbb-Association -- Organization
 
-    Association -- Offering 
-    Association o-- `x-nl-okbb-Association`
-    Association -- Person
-    Person o-- `x-nl-okbb-Person`
     
 
 ```
